@@ -6,14 +6,17 @@ import (
 	lab2 "github.com/roman-mazur/architecture-lab-2"
 )
 
+
 var (
 	inputExpression = flag.String("e", "", "Expression to compute")
-	// TODO: Add other flags support for input and output configuration.
+	inputFile = flag.String("f", "", "File with expression to compute")
+	outputFile = flag.String("o", "", "File for the result")
 )
+
 
 func main() {
 	flag.Parse()
-
+	
 	// TODO: Change this to accept input from the command line arguments as described in the task and
 	//       output the results using the ComputeHandler instance.
 	//       handler := &lab2.ComputeHandler{
