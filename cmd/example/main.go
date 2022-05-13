@@ -20,21 +20,16 @@ var (
 
 func main() {
 	flag.Parse()
-	var handler lab2.ComputeHandler
+	handler := &lab2.ComputeHandler{}
 	if *inputExpression != "" {
-		handler = lab2.ComputeHandler{
-			Input : strings.NewReader(*inputExpression),
-		}
+		handler.Input = strings.NewReader(*inputExpression)
 	} else {
 		file, err := os.Open(*inputFile)
 		if err != nil {
 			log.Fatal(err)
 		}
 		defer file.Close()
-
-		handler = lab2.ComputeHandler{
-			Input : file,
-		}
+		handler.Input = file
 	}
 	
 	// TODO: Change this to accept input from the command line arguments as described in the task and
