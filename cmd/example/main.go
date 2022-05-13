@@ -2,7 +2,11 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	//"fmt"
+	//"io"
+	"strings"
+	"os"
+	"log"
 	lab2 "github.com/roman-mazur/architecture-lab-2"
 )
 
@@ -16,6 +20,22 @@ var (
 
 func main() {
 	flag.Parse()
+	var handler lab2.ComputeHandler
+	if *inputExpression != "" {
+		handler = lab2.ComputeHandler{
+			Input : strings.NewReader(*inputExpression),
+		}
+	} else {
+		file, err := os.Open(*inputFile)
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer file.Close()
+
+		handler = lab2.ComputeHandler{
+			Input : file,
+		}
+	}
 	
 	// TODO: Change this to accept input from the command line arguments as described in the task and
 	//       output the results using the ComputeHandler instance.
@@ -25,6 +45,7 @@ func main() {
 	//       }
 	//       err := handler.Compute()
 
-	res, _ := lab2.PrefixToPostfix("+ 2 2")
-	fmt.Println(res)
+	//res, _ := lab2.PrefixToPostfix("+ 2 2")
+	//fmt.Println(res)
+	handler.Compute()
 }
