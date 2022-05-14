@@ -56,5 +56,6 @@ func main() {
 		handler.Output = os.Stdout
 	}
 
-	handler.Compute()
+	err := handler.Compute()
+	checkErr(err)
 }
