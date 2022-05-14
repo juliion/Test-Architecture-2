@@ -31,6 +31,9 @@ func main() {
 		defer file.Close()
 		handler.Input = file
 	}
+	if *outputFile != "" {
+		
+	}
 	
 	// TODO: Change this to accept input from the command line arguments as described in the task and
 	//       output the results using the ComputeHandler instance.
